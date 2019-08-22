@@ -1,9 +1,12 @@
 function fullname(action) {
-  return `HowManySemitonesGame-${action}`;
+  return `${action}-HowManySemiTonesGame`;
 }
 
 export const actions = {
-  RESET: fullname("RESET")
+  RESET: fullname("RESET"),
+  UPDATE_ANSWER_UP: fullname("UPDATE_ANSWER_UP"),
+  UPDATE_ANSWER_DOWN: fullname("UPDATE_ANSWER_DOWN"),
+  SUBMIT: fullname("SUBMIT")
 };
 
 export const actionCreators = {
@@ -13,5 +16,23 @@ export const actionCreators = {
       firstNote,
       secondNote
     };
+  },
+
+  updateAnswerUp: ({ answer }) => {
+    return {
+      type: actions.UPDATE_ANSWER_UP,
+      answer
+    };
+  },
+
+  updateAnswerDown: ({ answer }) => {
+    return {
+      type: actions.UPDATE_ANSWER_DOWN,
+      answer
+    };
+  },
+
+  submit: () => {
+    return { type: actions.SUBMIT };
   }
 };

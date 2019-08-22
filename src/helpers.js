@@ -15,6 +15,21 @@ export const notes = [
   ["G♯", "A♭"]
 ];
 
+export function notePosition(note) {
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i].indexOf(note) !== -1) {
+      console.log(`${note} => ${i}`);
+      return i;
+    }
+  }
+}
+
+export function noteDistance(note1, note2) {
+  let distance = notePosition(note2) - notePosition(note1);
+  if (distance < 0) return distance + 12;
+  return distance;
+}
+
 function randomIndices(arr, num) {
   let result = [];
   while (result.length < num) {

@@ -3,17 +3,36 @@ import { actions } from "./actions.js";
 const initialState = {
   firstNote: null,
   secondNote: null,
-  answer: null
+  answerUp: "",
+  answerDown: "",
+  submittedAnswerUp: "",
+  revealAnswer: false
 };
 
 function HowManySemitonesGame(state = initialState, action) {
   switch (action.type) {
     case actions.RESET:
       return {
-        ...state,
+        ...initialState,
         firstNote: action.firstNote,
-        secondNote: action.secondNote,
-        answer: ""
+        secondNote: action.secondNote
+      };
+    case actions.UPDATE_ANSWER_UP:
+      return {
+        ...state,
+        answerUp: parseInt(action.answer),
+        answerDown: 12 - parseInt(action.answer)
+      };
+    case actions.UPDATE_ANSWER_DOWN:
+      return {
+        ...state,
+        answerDown: parseInt(action.answer),
+        answerUp: 12 - parseInt(action.answer)
+      };
+    case actions.SUBMIT:
+      return {
+        ...state,
+        submittedAnswerUp: state.answerUp
       };
     default:
       return state;
