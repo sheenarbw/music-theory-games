@@ -18,7 +18,6 @@ export const notes = [
 export function notePosition(note) {
   for (let i = 0; i < notes.length; i++) {
     if (notes[i].indexOf(note) !== -1) {
-      console.log(`${note} => ${i}`);
       return i;
     }
   }

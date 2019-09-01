@@ -6,7 +6,8 @@ export const actions = {
   RESET: fullname("RESET"),
   UPDATE_ANSWER_UP: fullname("UPDATE_ANSWER_UP"),
   UPDATE_ANSWER_DOWN: fullname("UPDATE_ANSWER_DOWN"),
-  SUBMIT: fullname("SUBMIT")
+  SUBMIT: fullname("SUBMIT"),
+  REVEAL: fullname("REVEAL")
 };
 
 export const actionCreators = {
@@ -34,5 +35,9 @@ export const actionCreators = {
 
   submit: () => {
     return { type: actions.SUBMIT };
+  },
+
+  reveal: () => {
+    return { type: actions.REVEAL };
   }
 };

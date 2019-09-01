@@ -34,6 +34,11 @@ function HowManySemitonesGame(state = initialState, action) {
         ...state,
         submittedAnswerUp: state.answerUp
       };
+    case actions.REVEAL:
+      return {
+        ...state,
+        revealAnswer: true
+      };
     default:
       return state;
   }

@@ -2,14 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import { actionCreators } from "./actions.js";
 
-import { randomNotes, noteDistance } from "../../helpers.js";
-import { BigNoteCard } from "../widgets/NoteCards.js";
+import { randomNotes, noteDistance, notes } from "../../helpers.js";
+import { BigNoteCard, SmallNoteCard } from "../widgets/NoteCards.js";
 
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+
+function RevealSemitoneDistance(props) {
+  return (
+    <Grid container>
+      {notes.map((note, index) => (
+        <SmallNoteCard title={index} titleBgColor="primary.main">
+          {note.join(" / ")}
+        </SmallNoteCard>
+      ))}
+    </Grid>
+  );
+}
 
 class DumbHowManySemitonesGame extends React.Component {
   render() {
@@ -95,11 +107,20 @@ class DumbHowManySemitonesGame extends React.Component {
           {this.props.submittedAnswerUp ? (
             <React.Fragment>
               {correctAnswerUp === this.props.submittedAnswerUp ? (
-                <Typography>Yay! You got it</Typography>
+                <React.Fragment>
+                  <Typography>Yay! You got it</Typography>
+                  <RevealSemitoneDistance />
+                </React.Fragment>
               ) : (
                 <Typography>Oh no! wrong answer!</Typography>
               )}
             </React.Fragment>
+          ) : (
+            <React.Fragment />
+          )}
+
+          {this.props.revealAnswer ? (
+            <RevealSemitoneDistance />
           ) : (
             <React.Fragment />
           )}
