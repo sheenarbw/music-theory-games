@@ -90,7 +90,11 @@ class DumbHowManySemitonesGame extends React.Component {
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="secondary">
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={this.props.handleReveal}
+              >
                 I give up
               </Button>
             </Grid>
@@ -151,15 +155,21 @@ const mapDispatchToProps = dispatch => {
     },
 
     handleUpdateAnswerUp: ({ answer }) => {
+      if (isNaN(parseInt(answer))) return; // @Ruddy: is this a good place for input validation?
       dispatch(actionCreators.updateAnswerUp({ answer }));
     },
 
     handleUpdateAnswerDown: ({ answer }) => {
+      if (isNaN(parseInt(answer))) return;
       dispatch(actionCreators.updateAnswerDown({ answer }));
     },
 
     handleSubmit: () => {
       dispatch(actionCreators.submit());
+    },
+
+    handleReveal: () => {
+      dispatch(actionCreators.reveal());
     }
   };
 };

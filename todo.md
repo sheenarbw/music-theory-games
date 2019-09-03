@@ -1,7 +1,6 @@
-- get rid of Nans
+- "I give up" should work
 - Keyboard Shortcuts
 - Better Success and Failure message
 - Better explanation colors
-- "I give up" should work
 - Static render with Next.js
 - host
