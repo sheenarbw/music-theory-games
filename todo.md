@@ -1,4 +1,3 @@
-- "I give up" should work
 - Keyboard Shortcuts
 - Better Success and Failure message
 - Better explanation colors
